@@ -5,6 +5,22 @@ import CountryDishButton from "./country-dish-button";
 
 function App() {
   const countryOptions = ["Chinese", "Italian", "Peruvian", "Random"];
+  const attributes = [
+    {
+      id : "vegan", 
+      name: "is_lactose_intolerant",
+    },
+    {
+      id: "other-dietary-requirements", 
+      name: "is_vegan"
+    },
+    {
+      id: "user-text", 
+      name: "has_other_dietary_requirements"
+    },
+  ]
+
+  console.log(attributes.length)
 
   return (
     <div aria-label="parent container" className="parent-container">
@@ -21,9 +37,14 @@ function App() {
         <fieldset aria-label="allergies section" className="allergies">
           <legend className="legend">Indicate any dietary requirements</legend>
 
-          <CheckboxElements id={"vegan"} name={"is_lactose_intolerant"}/>
+        {attributes.map((attribute) => {
+          return  <CheckboxElements id={attribute.id} name={attribute.name}/>
+
+        })}
+
+          {/* <CheckboxElements id={"vegan"} name={"is_lactose_intolerant"}/>
           <CheckboxElements id={"other-dietary-requirements"} name={"is_vegan"}/>
-          <CheckboxElements id={"user-text"} name={"has_other_dietary_requirements"}/>
+          <CheckboxElements id={"user-text"} name={"has_other_dietary_requirements"}/> */}
           
           {/* <CheckboxElements/>
           <CheckboxElements/> */}

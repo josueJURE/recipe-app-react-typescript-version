@@ -21,9 +21,9 @@ function App() {
         <fieldset aria-label="allergies section" className="allergies">
           <legend className="legend">Indicate any dietary requirements</legend>
 
-          <CheckboxElements id={"isLactose_intolerant"} />
-          <CheckboxElements id={"is_Vegan"}/>
-          <CheckboxElements id={"has_other_dietary_requirement"}/>
+          <CheckboxElements id={"vegan"} name={"is_lactose_intolerant"}/>
+          <CheckboxElements id={"other-dietary-requirements"} name={"is_vegan"}/>
+          <CheckboxElements id={"user-text"} name={"has_other_dietary_requirements"}/>
           
           {/* <CheckboxElements/>
           <CheckboxElements/> */}

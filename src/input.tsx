@@ -3,6 +3,7 @@ import React, {useState} from "react";
 
 interface IProps {
     id: string | undefined;
+    name: string | undefined;
 
 }
 
@@ -20,9 +21,8 @@ const CheckboxElements: React.FC<IProps> = (props) => {
         <input
         type="checkbox"
         id={props.id}
-        // id="lactose-intolerant"
         className="dietary-requirements"
-        name="is_lactose_intolerant"
+        name={props.name}
         checked={isChecked}
         onChange={handleChekboxChange}
       />

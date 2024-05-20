@@ -1,4 +1,5 @@
 import React from "react";
+import CheckboxElements from "./input"
 import "./App.css";
 import CountryDishButton from "./country-dish-button";
 
@@ -19,7 +20,11 @@ function App() {
         </h1>
         <fieldset aria-label="allergies section" className="allergies">
           <legend className="legend">Indicate any dietary requirements</legend>
-          <input
+
+          <CheckboxElements/>
+          <CheckboxElements/>
+          <CheckboxElements/>
+          {/* <input
             type="checkbox"
             id="lactose-intolerant"
             className="dietary-requirements"
@@ -48,7 +53,7 @@ function App() {
             value=""
             name="what_are_user_other_dietary_requirements"
             placeholder="I don't eat:"
-          />
+          /> */}
         </fieldset>
 
         <section aria-label="cusine-options" className="cusine-options">

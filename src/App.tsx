@@ -37,8 +37,8 @@ function App() {
         <fieldset aria-label="allergies section" className="allergies">
           <legend className="legend">Indicate any dietary requirements</legend>
 
-        {attributes.map((attribute) => {
-          return  <CheckboxElements id={attribute.id} name={attribute.name}/>
+        {attributes.map((attribute, index) => {
+          return  <CheckboxElements id={attribute.id} name={attribute.name} key={`${attribute.id}-${index}`}/>
 
         })}
 

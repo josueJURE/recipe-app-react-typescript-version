@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 
+
 interface IProps {
+    id: string | undefined;
 
 }
 
-const CheckboxElements: React.FC<IProps> = () => {
+const CheckboxElements: React.FC<IProps> = (props) => {
     const [isChecked, setisChecked] = useState(false);
 
     const handleChekboxChange = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
@@ -14,14 +16,19 @@ const CheckboxElements: React.FC<IProps> = () => {
    
 
     return (
+  
         <input
         type="checkbox"
-        id="lactose-intolerant"
+        id={props.id}
+        // id="lactose-intolerant"
         className="dietary-requirements"
         name="is_lactose_intolerant"
         checked={isChecked}
         onChange={handleChekboxChange}
       />
+
+    
+   
     )
 
 }

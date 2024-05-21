@@ -81,8 +81,8 @@ function App() {
         </fieldset>
 
         <section aria-label="cusine-options" className="cusine-options">
-          {countryOptions.map((country) => {
-            return <CountryDishButton country={country} />;
+          {countryOptions.map((country, index) => {
+            return <CountryDishButton country={country} key={index}/>;
           })}
         </section>
         <div id="loading-container">

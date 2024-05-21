@@ -4,7 +4,27 @@ import "./App.css";
 import CountryDishButton from "./country-dish-button";
 
 function App() {
-  const countryOptions = ["Chinese", "Italian", "Peruvian", "Random"];
+  const countryOptions = [{
+    country_name: "Chinese",
+    origin: "recipe_country_of_origin"
+  },
+  {
+    country_name: "Italian",
+    origin: "recipe_country_of_origin"
+  },
+  {
+    country_name: "Peruvian",
+    origin: "recipe_country_of_origin"
+  },
+  {
+    country_name: "Random",
+    origin: "recipe_country_of_origin"
+  },
+
+
+
+
+];
   const attributes = [
     {
       id : "vegan", 
@@ -82,7 +102,7 @@ function App() {
 
         <section aria-label="cusine-options" className="cusine-options">
           {countryOptions.map((country, index) => {
-            return <CountryDishButton country={country} key={index}/>;
+            return <CountryDishButton country_name={country.country_name} key={index} origin={country.origin}/>;
           })}
         </section>
         <div id="loading-container">

@@ -261,11 +261,11 @@ input:checked + .slider:before {
 
 /* Loading indicator */
 
-#loading-container {
-  display: none;
+.loading-container {
   margin-bottom: 1em;
 }
-#loading-indicator {
+
+.loading-indicator {
   border: 5px solid transparent;
   border-top: 5px solid rgb(73, 180, 87);
   border-bottom: 5px solid rgb(0, 0, 0);
@@ -276,7 +276,7 @@ input:checked + .slider:before {
   margin: 20px auto;
 }
 
-#loading-text {
+.loading-text {
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px 10px;

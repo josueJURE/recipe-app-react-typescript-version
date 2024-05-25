@@ -1,49 +1,29 @@
-import React from "react";
-import CheckboxElements from "./input"
+import React, { useState } from "react";
+import CheckboxElements from "./input";
 import "./App.css";
 import CountryDishButton from "./country-dish-button";
+import { attributes, countryOptions } from "./utils/options-utils";
+import { generateCountryRecipe } from "./api-calls";
+import Loading from "./loading";
 
 function App() {
-  const countryOptions = [{
-    country_name: "Chinese",
-    origin: "recipe_country_of_origin"
-  },
-  {
-    country_name: "Italian",
-    origin: "recipe_country_of_origin"
-  },
-  {
-    country_name: "Peruvian",
-    origin: "recipe_country_of_origin"
-  },
-  {
-    country_name: "Random",
-    origin: "recipe_country_of_origin"
-  },
-
-
-
-
-];
-  const attributes = [
-    {
-      id : "vegan", 
-      name: "is_lactose_intolerant",
-    },
-    {
-      id: "other-dietary-requirements", 
-      name: "is_vegan"
-    },
-    {
-      id: "user-text", 
-      name: "has_other_dietary_requirements"
-    },
-  ]
-
-  console.log(attributes.length)
+  const [loading, setLoading] = useState(false);
+  const selectCountry = async () => {
+    setLoading(true);
+    try {
+      const recipe = await generateCountryRecipe();
+      console.log(recipe);
+    } catch (error) {
+      debugger;
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div aria-label="parent container" className="parent-container">
+      {loading && <Loading />}
       <img src="" alt="" id="background-img" />
       <main className="main-element">
         <label className="switch">
@@ -57,59 +37,29 @@ function App() {
         <fieldset aria-label="allergies section" className="allergies">
           <legend className="legend">Indicate any dietary requirements</legend>
 
-        {attributes.map((attribute, index) => {
-          return  <CheckboxElements id={attribute.id} name={attribute.name} key={`${attribute.id}-${index}`}/>
-
-        })}
-
-          {/* <CheckboxElements id={"vegan"} name={"is_lactose_intolerant"}/>
-          <CheckboxElements id={"other-dietary-requirements"} name={"is_vegan"}/>
-          <CheckboxElements id={"user-text"} name={"has_other_dietary_requirements"}/> */}
-          
-          {/* <CheckboxElements/>
-          <CheckboxElements/> */}
-          {/* <input
-            type="checkbox"
-            id="lactose-intolerant"
-            className="dietary-requirements"
-            name="is_lactose_intolerant"
-          />
-          <label htmlFor="lactose-intolerant">lactose intolerant?</label>
-          <input
-            type="checkbox"
-            id="vegan"
-            className="dietary-requirements"
-            name="is_vegan"
-          />
-          <label htmlFor="vegan">vegan?</label>
-
-          <input
-            type="checkbox"
-            id="other-dietary-requirements"
-            className="dietary-requirements"
-            name="has_other_dietary_requirements"
-          />
-          <label htmlFor="other-dietary-requirements">other</label>
-          <input
-            id="user-text"
-            type="text"
-            className="dietary-requirements off"
-            value=""
-            name="what_are_user_other_dietary_requirements"
-            placeholder="I don't eat:"
-          /> */}
+          {attributes.map((attribute, index) => {
+            return (
+              <CheckboxElements
+                id={attribute.id}
+                name={attribute.name}
+                key={`${attribute.id}-${index}`}
+              />
+            );
+          })}
         </fieldset>
 
         <section aria-label="cusine-options" className="cusine-options">
           {countryOptions.map((country, index) => {
-            return <CountryDishButton country_name={country.country_name} key={index} origin={country.origin}/>;
+            return (
+              <CountryDishButton
+                country_name={country.country_name}
+                key={index}
+                origin={country.origin}
+                selectCountry={selectCountry}
+              />
+            );
           })}
         </section>
-        <div id="loading-container">
-          <div id="loading-indicator"></div>
-          <h3 id="loading-text">Creating Recipe...</h3>
-        </div>
-
         {/* <!-- <label for="user-email">Enter you email address</label> --> */}
         <button className="try-again-btn">Try again</button>
       </main>

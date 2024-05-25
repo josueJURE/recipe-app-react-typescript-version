@@ -1,26 +1,16 @@
 import React from "react";
+import { generateCountryRecipe } from "./api-calls";
 
 interface IProps {
   country_name: string;
   origin: string;
-
+  selectCountry: () => void;
 }
 
-// enum EnumSatus {
-//     active = 1,
-//     disabled = -1,
-//     deleted = -2,
-// }
-
-const CountryDishButton: React.FC<IProps> = ( props) => {
-  const selectCountry = () => {
-    console.log(props.country_name)
-    // console.log("country", country, EnumSatus.deleted);
-  };
-
+const CountryDishButton: React.FC<IProps> = (props) => {
   return (
     <button
-      onClick={selectCountry}
+      onClick={props.selectCountry}
       className="recipe-button"
       name={props.country_name}
       value={props.origin}

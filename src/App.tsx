@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import CheckboxElements from "./input";
 import "./App.css";
 import CountryDishButton from "./country-dish-button";
-import { attributes, countryOptions } from "./utils/options-utils";
+import { attributes, countryOptions, ids } from "./utils/options-utils";
 import { generateCountryRecipe } from "./api-calls";
 import Loading from "./loading";
+import ToggleSwitch from "./toggle-switch";
+
+
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -26,10 +29,12 @@ function App() {
       {loading && <Loading />}
       <img src="" alt="" id="background-img" />
       <main className="main-element">
-        <label className="switch">
-          <input type="checkbox" className="dark-light-button" />
-          <span className="slider round"></span>
-        </label>
+        {ids.map((id) => {
+          return (<ToggleSwitch 
+            id={id.id}
+            key={id.id} />)
+        })}
+      
         <h1 aria-label="app text" className="headline">
           No idea what to cook? No worries recipe for success app does the
           thinking for you.
